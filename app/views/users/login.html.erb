@@ -1,0 +1,13 @@
+<h2> Do you even go here? </h2>
+
+<form action="/login" method="post" >
+
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+
+Email: <input type="text" name="email"></input>
+
+PW: <input type="password" name="password"></input>
+
+<input type="submit"></input>
+
+<%= link_to 'New Friend?', new_user_path %>

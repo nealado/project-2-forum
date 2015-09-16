@@ -1,24 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
+  <h1><%= @topic.title %></h1>
 </p>
 
+<p><strong><%= @topic.user.first_name %></strong></p>
+
 <p>
-  <strong>Content:</strong>
+  <img src="<%=@topic.user.avatar_url%>" width=100px/>
   <%= @topic.content %>
 </p>
 
-<p>
-  <strong>Likes:</strong>
-  <%= @topic.likes %>
-</p>
+<hr>
+<h2> Comments </h2>
+<p> <% @topic.comments.each do |comment| %> </p>
+    <%= comment.title %>
+    <% end %>
+<p> <%= link_to 'Comment', new_comment_path(@topic)%> </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @topic.user %>
-</p>
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>

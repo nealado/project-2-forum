@@ -7,6 +7,28 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def login
+  end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to '/login'
+  end
+
+  def login_post
+    @user = User.find_by({email: params[:email]})
+    if @user
+      if @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        redirect_to topics_path
+      else
+        redirect_to '/login'
+      end
+    else
+      redirect_to '/login'
+    end
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
