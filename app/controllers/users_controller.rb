@@ -4,10 +4,20 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if current_user
+      @users = User.all
+    else
+      redirect_to '/login'
+    end
+
   end
 
   def login
+    if current_user
+      redirect_to topics_path
+    else
+      render :login
+    end
   end
 
   def logout

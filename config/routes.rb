@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :topics
+  resources :topics do
+    get '/sort_title' => 'topics#sort_title'
+    get '/sort_most_comments' => 'topics#sort_most_comments'
+    resources :comments
+    resources :upvote
+  end
   resources :users
 
-  root 'users#login'
+  root 'users#index'
 
   get '/login' => 'users#login'
   post '/login' => 'users#login_post'
 
   get '/logout' => 'users#logout'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
   <h1><%= @topic.title %></h1>
 </p>
 
-<p><strong><%= @topic.user.first_name %></strong></p>
+<p> Created by <strong><%= @topic.user.first_name %></strong> <%= time_ago_in_words(@topic.created_at)%> ago. </p>
 
 <p>
   <img src="<%=@topic.user.avatar_url%>" width=100px/>
@@ -12,11 +13,19 @@
 </p>
 
 <hr>
+<%= link_to 'likes', new_topic_upvote_path(@topic) %></td>
+<%= @topic.likes %>
+
 <h2> Comments </h2>
-<p> <% @topic.comments.each do |comment| %> </p>
+<!-- <p> <% @topic.comments.each do |comment| %> </p>
     <%= comment.title %>
     <% end %>
-<p> <%= link_to 'Comment', new_comment_path(@topic)%> </p>
+<p> <%= link_to 'Comment', new_topic_comment_path(@topic)%> </p> -->
+
+<%= render @topic.comments  %>
+<hr>
+<h3> Reply to thread </h3>
+<%= render "comments/form" %>
 
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |

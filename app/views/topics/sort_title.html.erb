@@ -4,24 +4,16 @@
 
 <h2>Listing Topics</h2>
 
-<!-- working -->
-<%= link_to 'sort by newest', topic_sort_title_path(@topics) %>
-
-<!-- not working -->
-<%= link_to 'sort by most comments', {controller: :topics, action: :index, sort: true} %>
-
+<%= link_to 'index', topics_path %>
 
 <div>
     <% @topics.each do |topic| %>
     <hr>
     <div>
         <%= link_to topic.title, topic %>
-        <p> Created <%= time_ago_in_words(topic.created_at) %> ago
-          by <strong><%= topic.user.first_name %></strong>
-        </p>
-        <p>
-          Count: <%= topic.comments.count %>
-        </p>
+        <p> Created <%= time_ago_in_words(topic.created_at) %> ago</td>
+        by <strong><%= topic.user.first_name %></td> </strong>
+      </p>
       </div>
     <hr>
     <% end %>

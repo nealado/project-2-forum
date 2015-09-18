@@ -9,6 +9,14 @@
 <body>
 
 <h1>Jake's Forum</h1>
+
+<% if current_user %>
+  <%= current_user.first_name %>
+  <%= link_to 'New Topic', new_topic_path %>
+<%= link_to 'Logout', '/logout' %>
+<% end %>
+<hr>
+
 <%= yield %>
 
 </body>

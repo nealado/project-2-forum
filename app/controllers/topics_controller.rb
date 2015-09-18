@@ -4,7 +4,25 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    if params[:sort]
+      @topics = Topic.includes(:comments).sort_by { |topic| topic.comments.count }.reverse
+    else
+      @topics = Topic.all.order('created_at DESC')
+    end
+  end
+
+  def sort_title
+    # @topics = Topic.all.sort_by { |obj| obj.created_at}
+    @topics = Topic.all.order('created_at DESC')
+  end
+
+  def sort_most_comments
+    # @topics = Topic.joins(:comments).group("comments.id").count.sort
+    Topic.includes(:comments).group('topics.title').count('comments.id')
+  end
+
+  def count_comments
+    @count = Topic.find(params[:id]).comments.count
   end
 
   # GET /topics/1
@@ -12,9 +30,13 @@ class TopicsController < ApplicationController
   def show
   end
 
+  def upvote
+    @topic.update_attributes(likes: topic.likes + 1)
+  end
+
   # GET /topics/new
   def new
-    @topic = Topic.new
+    @topic = current_user.topics.build
   end
 
   # GET /topics/1/edit
@@ -24,7 +46,7 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.json
   def create
-    @topic = Topic.new(topic_params)
+    @topic = current_user.topics.build(topic_params)
 
     respond_to do |format|
       if @topic.save
@@ -69,6 +91,6 @@ class TopicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
-      params.require(:topic).permit(:title, :content, :likes, :user_id)
+      params.require(:topic).permit(:title, :content, :likes)
     end
 end
