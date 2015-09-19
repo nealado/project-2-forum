@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150916152234) do
 
   create_table "topics", force: :cascade do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
     t.integer  "likes"
     t.integer  "user_id"
     t.datetime "created_at", null: false

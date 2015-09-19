@@ -14,6 +14,7 @@
         <p> Created <%= time_ago_in_words(topic.created_at) %> ago</td>
         by <strong><%= topic.user.first_name %></td> </strong>
       </p>
+      <p>          Comment Count: <%= topic.comments.count %></p>
       </div>
     <hr>
     <% end %>

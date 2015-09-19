@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 
   # POST /comments
   # POST /comments.json
+  # Heavily used https://www.youtube.com/watch?v=rTP1eMfI5Bs as a resource.
   def create
     @topic = Topic.find(params[:topic_id])
     @comment = @topic.comments.create(comment_params)

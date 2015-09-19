@@ -13,6 +13,7 @@
         <%= link_to topic.title, topic %>
         <p> Created <%= time_ago_in_words(topic.created_at) %> ago</td>
         by <strong><%= topic.user.first_name %></td> </strong>
+        <p>           Comment Count: <%= topic.comments.count %> </p>
       </p>
       </div>
     <hr>
