@@ -13,6 +13,10 @@ class TopicsController < ApplicationController
     end
   end
 
+  def user_location
+    @location = Net::HTTP.get_response(URI.parse('http://ipinfo.io/region')).body
+  end
+
   def upvote
     @topic = Topic.find(params[:id])
     @topic.upvotes_count += 1

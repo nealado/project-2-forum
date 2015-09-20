@@ -13,7 +13,7 @@
 </p>
 
 <p> Location :
-    <%= Net::HTTP.get_response(URI.parse('http://ipinfo.io/region')).body %>
+    <%= @location %>
 </p>
 
 <p>
