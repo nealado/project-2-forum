@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916152234) do
+ActiveRecord::Schema.define(version: 20150919150357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,13 +31,23 @@ ActiveRecord::Schema.define(version: 20150916152234) do
   create_table "topics", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "likes"
+    t.integer  "upvotes_count", default: 0
     t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
+
+  create_table "upvotes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
+  add_index "upvotes", ["topic_id"], name: "index_upvotes_on_topic_id", using: :btree
+  add_index "upvotes", ["user_id"], name: "index_upvotes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -52,4 +62,6 @@ ActiveRecord::Schema.define(version: 20150916152234) do
   add_foreign_key "comments", "topics"
   add_foreign_key "comments", "users"
   add_foreign_key "topics", "users"
+  add_foreign_key "upvotes", "topics"
+  add_foreign_key "upvotes", "users"
 end

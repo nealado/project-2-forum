@@ -11,6 +11,13 @@ class TopicsController < ApplicationController
     end
   end
 
+  def upvote
+    @topic = Topic.find(params[:id])
+    @topic.upvotes_count += 1
+    @topic.save
+    redirect_to(topic_path)
+  end
+
   def sort_title
     # @topics = Topic.all.sort_by { |obj| obj.created_at}
     @topics = Topic.all.order('created_at DESC')
@@ -28,10 +35,6 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
-  end
-
-  def upvote
-    @topic.update_attributes(likes: topic.likes + 1)
   end
 
   # GET /topics/new

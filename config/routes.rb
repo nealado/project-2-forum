@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   resources :topics do
     get '/sort_title' => 'topics#sort_title'
     get '/sort_most_comments' => 'topics#sort_most_comments'
+      member do
+        post 'upvote'
+      end
     resources :comments
-    resources :upvote
   end
   resources :users
 
-  root 'users#index'
 
   get '/login' => 'users#login'
   post '/login' => 'users#login_post'

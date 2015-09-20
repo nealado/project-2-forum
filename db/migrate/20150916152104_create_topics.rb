@@ -3,7 +3,7 @@ class CreateTopics < ActiveRecord::Migration
     create_table :topics do |t|
       t.string :title
       t.text :content
-      t.integer :likes
+      t.integer :upvotes_count, :default => 0
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false

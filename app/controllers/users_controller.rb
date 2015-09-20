@@ -15,8 +15,8 @@ class UsersController < ApplicationController
   def login
     if current_user
       redirect_to topics_path
-    else
-      render :login
+    # else
+    #   render :login
     end
   end
 
@@ -47,6 +47,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+
   end
 
   # GET /users/1/edit
@@ -57,16 +58,15 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        session[:user_id] = @user.id
+        redirect_to topics_path
+        # format.html { redirect_to @user, notice: 'User was successfully created.' }
+        # format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # PATCH/PUT /users/1

@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<td><%= pluralize(@topic.upvotes_count, "vote") %></td>
+<td><%= button_to '+1', upvote_topic_path(@topic), method: :post %></td>
 
 <p>
   <h1><%= @topic.title %></h1>
@@ -13,8 +15,7 @@
 </p>
 
 <hr>
-<%= link_to 'likes', new_topic_upvote_path(@topic) %></td>
-<%= @topic.likes %>
+
 
 <h2> Comments </h2>
 <!-- <p> <% @topic.comments.each do |comment| %> </p>
