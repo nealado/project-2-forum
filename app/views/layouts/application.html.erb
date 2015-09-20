@@ -8,16 +8,17 @@
 </head>
 <body>
 
-<h1>Jake's Forum</h1>
-
-<% if current_user %>
-  <%= current_user.first_name %>
-  <%= link_to 'New Topic', new_topic_path %>
-<%= link_to 'Logout', '/logout' %>
-<% end %>
-<hr>
+<div class = "header">
+  <h1 id="main_h1"><a href="/topics">Unicorn Land</a></h1>
+  <% if current_user %>
+    <%= current_user.first_name %>
+    <%= link_to 'New Topic', new_topic_path %>
+    <%= link_to 'Logout', '/logout' %>
+  <% end %>
+</div>
 
 <%= yield %>
+
 
 </body>
 </html>

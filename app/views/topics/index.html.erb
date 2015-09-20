@@ -4,11 +4,12 @@
 
 <h2>Listing Topics</h2>
 
-<!-- working -->
-<%= link_to 'sort by newest', topic_sort_title_path(@topics) %>
+<!-- TAKE THIS OUT AND PATHS/VIEWS THAT GO TO IT -->
+<!-- <%= link_to 'sort by newest', topic_sort_title_path(@topics) %> -->
 
-<!-- not working -->
 <%= link_to 'sort by most comments', {controller: :topics, action: :index, sort: true} %>
+
+<%= link_to 'sort by most upvotes', {controller: :topics, action: :index, sort_upvotes: true} %>
 
 
 <div>
@@ -20,8 +21,8 @@
           by <strong><%= topic.user.first_name %></strong>
         </p>
         <p>
-          Comment Count: <%= topic.comments.count %>
-          Upvote Count: <%= topic.upvotes_count %>
+        <%= topic.comments.count %> comments
+        <%= topic.upvotes_count %> upvotes
         </p>
       </div>
     <hr>

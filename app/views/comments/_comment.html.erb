@@ -1,4 +1,4 @@
-<p> <%= comment.content %>
+<p> <%= markdown(comment.content) %>
 <p> <%= comment.user.email %>
 
 <%= link_to 'Delete Comment', [comment.topic, comment], method: :delete, data: { confirm: 'Are you sure?' } %>

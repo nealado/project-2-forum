@@ -6,6 +6,8 @@ class TopicsController < ApplicationController
   def index
     if params[:sort]
       @topics = Topic.includes(:comments).sort_by { |topic| topic.comments.count }.reverse
+    elsif params[:sort_upvotes]
+      @topics = Topic.includes(:upvotes).sort_by { |topic| topic.upvotes.count}
     else
       @topics = Topic.all.order('created_at DESC')
     end

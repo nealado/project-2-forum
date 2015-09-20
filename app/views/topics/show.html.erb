@@ -7,11 +7,18 @@
   <h1><%= @topic.title %></h1>
 </p>
 
-<p> Created by <strong><%= @topic.user.first_name %></strong> <%= time_ago_in_words(@topic.created_at)%> ago. </p>
+<p> Created by
+      <strong><%= @topic.user.first_name %></strong>
+      <%= time_ago_in_words(@topic.created_at)%> ago.
+</p>
+
+<p> Location :
+    <%= Net::HTTP.get_response(URI.parse('http://ipinfo.io/region')).body %>
+</p>
 
 <p>
   <img src="<%=@topic.user.avatar_url%>" width=100px/>
-  <%= @topic.content %>
+  <%= markdown(@topic.content) %>
 </p>
 
 <hr>
