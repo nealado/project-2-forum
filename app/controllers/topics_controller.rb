@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-
+  attr_accessor :upvote
+  
   # GET /topics
   # GET /topics.json
   def index
