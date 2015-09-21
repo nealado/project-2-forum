@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
   <div class="body">
     <div class="post_header">
-
-
+      <br>
       <p><h1 id="topic_title"><%= @topic.title %></h1>
         <span id="upvote"><%= pluralize(@topic.upvotes_count, "vote") %>
         <%= button_to '+1', upvote_topic_path(@topic), method: :post %> </span>

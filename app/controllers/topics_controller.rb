@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
   def upvote
     @topic = Topic.find(params[:id])
     @topic.upvotes_count += 1
-    @topic.save
+    @topic.save!
     redirect_to(topic_path)
   end
 
