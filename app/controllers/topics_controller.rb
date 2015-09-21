@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
     if params[:sort]
       @topics = Topic.includes(:comments).sort_by { |topic| topic.comments.count }.reverse
     elsif params[:sort_upvotes]
-      @topics = Topic.includes(:upvotes).sort_by { |topic| topic.upvotes.count}
+      @topics = Topic.includes(:upvotes).sort_by { |topic| topic.upvotes.count}.reverse
     else
       @topics = Topic.all.order('created_at DESC')
     end

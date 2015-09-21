@@ -1,40 +1,31 @@
 <p id="notice"><%= notice %></p>
-
-<td><%= pluralize(@topic.upvotes_count, "vote") %></td>
-<td><%= button_to '+1', upvote_topic_path(@topic), method: :post %></td>
-
-<p>
-  <h1><%= @topic.title %></h1>
-</p>
-
-<p> Created by
-      <strong><%= @topic.user.first_name %></strong>
-      <%= time_ago_in_words(@topic.created_at)%> ago.
-</p>
-
-<p> Location :
-    <%= @location %>
-</p>
-
-<p>
-  <img src="<%=@topic.user.avatar_url%>" width=100px/>
-  <%= markdown(@topic.content) %>
-</p>
-
-<hr>
+  <div class="body">
+    <div class="post_header">
 
 
-<h2> Comments </h2>
-<!-- <p> <% @topic.comments.each do |comment| %> </p>
-    <%= comment.title %>
-    <% end %>
-<p> <%= link_to 'Comment', new_topic_comment_path(@topic)%> </p> -->
+      <p><h1 id="topic_title"><%= @topic.title %></h1>
+        <span id="upvote"><%= pluralize(@topic.upvotes_count, "vote") %>
+        <%= button_to '+1', upvote_topic_path(@topic), method: :post %> </span>
+      </p>
 
-<%= render @topic.comments  %>
-<hr>
-<h3> Reply to thread </h3>
-<%= render "comments/form" %>
+      <p>Created by <strong><%= @topic.user.first_name %></strong>
+          <%= time_ago_in_words(@topic.created_at)%> ago from <%= @location %> </p>
+    </div>
 
+    <p class="text_body">
+      <img id="avatar" src="<%=@topic.user.avatar_url%>" width=100px/>
+      <%= markdown(@topic.content) %>
+    </p>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+    <hr>
+
+    <h2> Comments </h2>
+      <%= render @topic.comments  %>
+      <hr>
+
+    <h3> Reply to thread </h3>
+      <%= render "comments/form" %>
+
+    <%= link_to 'Edit', edit_topic_path(@topic) %> |
+    <%= link_to 'Back', topics_path %>
+</div>

@@ -1,13 +1,25 @@
-<h2> Do you even go here? </h2>
 
-<form action="/login" method="post" >
+<div id="body">
+  <h1> Unicorn Land <h1>
 
-<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+  <h2> Do you even go here? </h2>
 
-Email: <input type="text" name="email"></input>
+  <form action="/login" method="post" >
 
-PW: <input type="password" name="password"></input>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+    <div>
+      Email: <input type="text" name="email"></input>
+    </div>
 
-<input type="submit"></input>
+    <br>
 
-<%= link_to 'New Friend?', new_user_path %>
+    <div>
+      PW: <input type="password" name="password"></input>
+    </div>
+
+    <br>
+    <input type="submit"></input>
+    <br>
+
+    <%= link_to 'New Friend?', new_user_path %>
+</div>

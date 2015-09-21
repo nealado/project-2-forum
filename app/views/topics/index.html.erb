@@ -1,31 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'New Topic', new_topic_path %>
-
-<h2>Listing Topics</h2>
 
 <!-- TAKE THIS OUT AND PATHS/VIEWS THAT GO TO IT -->
 <!-- <%= link_to 'sort by newest', topic_sort_title_path(@topics) %> -->
 
-<%= link_to 'sort by most comments', {controller: :topics, action: :index, sort: true} %>
-
-<%= link_to 'sort by most upvotes', {controller: :topics, action: :index, sort_upvotes: true} %>
 
 
-<div>
+<div class="body">
+
+  <div id="navbar">
+    <%= link_to 'New Topic', new_topic_path %> ★
+    <%= link_to 'Sort by Most Comments', {controller: :topics, action: :index, sort: true} %> ★
+    <%= link_to 'Sort by Most Upvotes', {controller: :topics, action: :index, sort_upvotes: true} %>
+  </div>
+
     <% @topics.each do |topic| %>
-    <hr>
-    <div>
-        <%= link_to topic.title, topic %>
-        <p> Created <%= time_ago_in_words(topic.created_at) %> ago
-          by <strong><%= topic.user.first_name %></strong>
-        </p>
-        <p>
-        <%= topic.comments.count %> comments
-        <%= topic.upvotes_count %> upvotes
-        </p>
-      </div>
-    <hr>
+    <div class="topic">
+        <div id="topic_h1">
+          <h2 id="topic_title"><%= link_to topic.title, topic %></h2>
+            <p><span id="upvote_count"> <%= topic.upvotes_count %> ♥ <%= topic.comments.count %> comments </p><p></span>
+              <span id="created"> Created <%= time_ago_in_words(topic.created_at) %> ago
+              by <strong><%= topic.user.first_name %></strong>
+              </span>
+            </p>
+        </div>
+
+        </div>
     <% end %>
 </div>
 

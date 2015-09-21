@@ -1,73 +1,51 @@
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-family: 'Alice', serif;
+  font-size: 15px;
   line-height: 18px;
+  text-transform: capitalize;
+
 }
 
 p, ol, ul, td {
   font-family: 'Alice', serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 20px;
+  line-height: 28px;
 }
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-a {
-  color: #000;
-
-  &:visited {
-    color: #666;
-  }
-
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
-}
-
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
-}
-
-#notice {
-  color: green;
-}
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
-  }
-
-  ul li {
-    font-size: 12px;
-    list-style: square;
-  }
+div.header {
+  position: fixed;
+  width: 100%;
+  background-color: #F21B3F;
+  margin: 0px auto;
+  z-index: 1000;
+    h1 {
+      font-family: 'Sacramento', cursive;
+      font-size: 5em;
+      color: white;
+      text-transform: capitalize;
+      text-align: center;
+      a {
+        text-decoration: none;
+      }
+      a:hover {
+        color: white;
+      }
+    }
+    p {
+      color: white;
+      text-align: right;
+      font-size: 15px;
+    }
+    a:link {
+      color: white;
+    }
+    a:visited {
+      color: white;
+    }
+    a:hover {
+      color: #08BDBD;
+      background: none;
+    }
 }

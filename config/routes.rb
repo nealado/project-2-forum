@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   resources :users
 
-
+  root 'users#login'
   get '/login' => 'users#login'
   post '/login' => 'users#login_post'
 
