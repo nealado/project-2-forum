@@ -11,7 +11,7 @@ body {
   width: 100%;
 
   a:hover {
-    color: #08BDBD;
+    color: #3498db;
     background: none;
   }
 }
@@ -24,7 +24,7 @@ div#navbar {
     text-decoration: none;
   }
   a:hover {
-    color: #08BDBD;
+    color: #3498db;
   }
 
 }
@@ -36,23 +36,23 @@ h1#topic_title {
 
 h2#topic_title {
     a {
-      color: white;
+      color: black;
       text-decoration: none;
     }
     a:hover {
-      color: #08BDBD;
+      color: #3498db;
     }
 }
 
 div.topic {
   width: 80%;
   margin: 0 auto;
-  background-color: #29BF12;
+  background-color: white;
   padding: 15px;
   border-color: white;
   border-width: thin;
   border-style: solid;
-  color: #ABFF4F;
+  color: #2ecc71;
 
 }
 

@@ -18,12 +18,14 @@
 
     <hr>
 
-    <h2> Comments </h2>
-      <%= render @topic.comments  %>
-      <hr>
+    <div class="comments">
+      <h2> Comments </h2>
+        <%= render @topic.comments  %>
+        <hr>
 
-    <h3> Reply to thread </h3>
-      <%= render "comments/form" %>
+      <h3> Reply to thread </h3>
+        <%= render "comments/form" %>
+    </div>
 
     <%= link_to 'Edit', edit_topic_path(@topic) %> |
     <%= link_to 'Back', topics_path %>
